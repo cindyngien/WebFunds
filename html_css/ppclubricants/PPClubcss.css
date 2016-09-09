@@ -1,0 +1,121 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+#container{
+	width: 950px;
+	min-height: 800px;
+}
+#header{
+	background-color: #EEEEEE;
+	padding-left: 20px;
+}
+
+#header img, #rightheader{
+	display: inline-block;
+	vertical-align: top;
+}
+#rightheader{
+	margin-top: 25px;
+	font-size: 13px;
+	padding-left: 240px;
+}
+/*Navigation bar*/
+#navbar{
+	border: 1px solid #e7e7e7;
+	background-color: #e8e6e6;
+	padding: 7px;
+}
+#navbar ul li{
+	display: inline;
+}
+#navbar ul li a{
+	text-decoration: none;
+	color: black;
+	padding: 5px;
+	border-right: 1px solid gray;
+}
+
+/*Top header = image + About PPC*/
+#maincontent{
+	background-color: black;
+	height: 580px;
+}
+div.photo_and_about img{
+	display: inline-block;
+	vertical-align: top;
+	border: 5px solid white;
+	margin: 15px 10px 0px 20px;
+}
+div.aboutppc{
+	display:inline-block;
+	vertical-align:top;
+	background: linear-gradient(to right, #888888 , #1d1d17);
+	width: 50%;
+	height: 266px;
+	margin-top: 15px;
+}
+div.aboutppc h1{
+	background-color: #FBC62B;
+	padding: 5px;
+	font-size: 15px;
+}
+div.aboutppc h2{
+	color: white;
+	font-size: 15px;
+	margin: 5px 0px;
+	padding: 5px 10px 0px 10px;
+}
+div.aboutppc p{
+	color: white;
+	font-size: 12px;
+	margin-top: 10px;
+	padding: 5px 10px 0px 10px;
+}
+
+#midsection img{
+	width: 30px;
+	height: 20px;
+	display: inline-block;
+	margin: 5px 2px 0px 20px;
+}
+#midsection p{
+	display: inline-block;
+	font-size: 9px;
+	vertical-align: top;
+	margin-top: 10px;
+	color: #948F55;
+}
+
+div.ppcinfo{
+	display: inline-block;
+	vertical-align: top;
+	background: #FDF4E0;
+	width: 200px;
+	height: 250px;
+	margin: 5px 0px 0px 20px;
+}
+div.ppcinfo h1{
+	background-color: #FBC62B;
+	font-size: 15px;
+	height: 20px;
+	width: 100%;
+	padding-top: 5px;
+}
+div.ppcinfo img{
+	width: 100%;
+}
+div.ppcinfo p{
+	font-size: 12px;
+	margin: 5px;
+	height: 55px;
+}
+div.ppcinfo button{
+	background: #FDC700;
+	border: 2px solid black;
+	margin: 30px 0px 0px 100px;
+	padding: 3px;
+	font-size: 12px;
+	border-radius: 5px;
+}

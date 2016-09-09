@@ -1,0 +1,336 @@
+<html>
+<head>
+	<title>Pacman</title>
+	<style type="text/css">
+		body{
+			background-color: black;
+			margin:0px;
+		}
+		div.row div {
+			width:30px;
+			height:30px;
+			display:inline-block;
+		}
+		div.brick{
+			background-color:blue;
+		}
+		div.empty{
+			background-color:black;
+		}
+		div.coin{
+			background: url("http://www.initialsgames.com/winners/logo.gif");
+		}
+		div#pacman{
+			background: url("http://media.tumblr.com/179501c5f9a8ca0a0cf12be8720ad105/tumblr_inline_mhzqtbYVdp1roozkr.gif");
+			background-size: 30px;
+			width:30px;
+			height:30px;	
+		}
+
+		/* make ghosts */
+		div#blueGhost {
+			background: url('http://www.clipartbest.com/cliparts/7ia/Rga/7iaRgaaiA.gif');
+			background-size: 31px;
+			width: 30px;
+			height: 30px;
+		}
+		div#redGhost {
+			background: url('http://vignette3.wikia.nocookie.net/thefakegees/images/9/9a/Red-ghost-attack.gif/revision/latest?cb=20121215014239');
+			background-size: 30px;
+			width: 30px;
+			height: 30px;
+		}
+
+		div#pscore{
+			position:absolute;
+			top:5px;
+			left:1000px;
+			border:2px solid white;
+			padding:10px;
+			width:40px;
+			height:25px;
+			text-align: center;
+			color:white;
+			font-size:20px;
+		}
+		div#minion{
+			background: url("http://orig13.deviantart.net/b37a/f/2014/071/7/e/minion_by_arada11-d79zg7z.gif");
+			width: 30px;
+			height: 30px;
+		}
+		div#mscore{
+			position:absolute;
+			top:5px;
+			left:1100px;
+			border:2px solid white;
+			padding:10px;
+			width:40px;
+			height:25px;
+			text-align: center;
+			color:white;
+			font-size:20px;
+		}
+		p.opponent{
+			font-size: 20px;
+		}
+	
+	</style>
+</head>
+<body>
+
+	<div id='world'>
+	</div>
+	<div id='pscore'>0
+		</div>
+	<div id='mscore'>0</div>
+
+	<div id='pacman' style='position:absolute;'></div>
+	<div id='minion' style='position:absolute;'></div>
+
+	<!-- Ghost div tags --> 
+	<div id='redGhost' style='position:absolute;'></div>
+	<div id='blueGhost' style='position:absolute;'></div>
+
+		//make the maze a lot more interesting/bigger!
+		//do not let the pacman go through the wall!
+		//have a cherry appear.  cherry is worth 50 pts
+		//support two players
+		//have two ghosts appear and have them move around
+		//when the ghost meets/hits the pacman, display an alert that says 'Game Over!!!'
+
+
+		<script>
+		var pscore = 0;
+		var mscore = 0;
+
+		var pacman = {
+			x: 1,
+			y: 1
+		}
+		var minion = {
+			f: 10,
+			g: 20
+		}
+
+		//Make Ghost starting coordinates using JSON objects
+		var redGhost = {
+			m: 9,
+			s: 8
+		}
+		var blueGhost = {
+			m: 7,
+			s: 18
+		}
+
+		var world = [
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+			[2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,2],
+			[2,1,2,2,1,2,2,1,2,1,2,2,2,2,2,1,2,1,2,2,2,2,2,1,2,1,2,2,1,2,2,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,2,2,1,2,1,2,2,2,2,2,1,1,1,1,2,1,1,1,2,1,1,2,2,2,1,2,1,2,2,1,2],
+			[2,1,1,1,1,2,1,1,1,1,1,1,1,2,2,2,2,2,2,1,2,1,1,1,2,1,1,2,1,1,1,1,2],
+			[2,2,2,2,1,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,2,1,1,2,1,2,2,1,2],
+			[2,2,2,2,1,2,1,2,1,1,1,1,2,2,2,2,2,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,2,1,2,1,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,2,1,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,2,1,2],
+			[2,2,2,2,1,2,1,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,2,1,2],
+			[2,2,2,2,1,2,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,1,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,2,1,1,1,1,2,2,2,2,1,2,1,2],
+			[2,1,2,2,2,2,2,1,1,1,2,1,1,1,1,2,2,2,1,1,2,2,2,2,1,1,1,1,1,1,2,1,2],
+			[2,1,1,1,1,1,2,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2],
+			[2,2,2,2,2,1,2,1,1,1,2,1,2,2,2,2,2,2,1,1,1,2,1,2,2,2,2,2,1,1,2,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,2],
+			[2,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,1,2,2,2,1,2,2,2,2,2,1,2,2,2,2,1,2],
+			[2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+			[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
+		];
+
+		function displayPacman(){
+			document.getElementById('pacman').style.top = pacman.y*30;
+			document.getElementById('pacman').style.left = pacman.x*30;
+		}
+		function displayMinion(){
+			document.getElementById('minion').style.top = minion.f*30;
+			document.getElementById('minion').style.left = minion.g*30;
+		}
+
+		//append ghosts objects to html div tags in correlation to the world sub-array;
+		function displayRedGhost() {
+			document.getElementById('redGhost').style.top = redGhost.m*30;
+			document.getElementById('redGhost').style.left = redGhost.s*30;
+		}
+		function displayBlueGhost() {
+			document.getElementById('blueGhost').style.top = blueGhost.m*30;
+			document.getElementById('blueGhost').style.left = blueGhost.s*30;
+		}
+
+
+		function updatePscore(){
+			document.getElementById('pscore').innerHTML = pscore;
+		}
+		function updateMscore(){
+			document.getElementById('mscore').innerHTML = mscore;
+		}
+
+		function displayWorld(){
+			var output = '';
+			for(var i=0; i<world.length; i++){
+				output += "\n<div class='row'>";
+				for(var j=0; j<world[i].length; j++){
+					if(world[i][j] == 2){
+						output += "<div class='brick'></div>";
+					}
+					else if(world[i][j] == 1){
+						output += "<div class='coin'></div>";
+					}
+					else if(world[i][j] == 0){
+						output += "<div class='empty'></div>";
+					}
+				}
+				output += "</div>";
+			}
+
+			// console.log(output);
+			document.getElementById('world').innerHTML = output;
+		}
+
+		//Huge ass function
+		function moveGhost(ghost) {
+			//Choose random direction using random numbers 1-4
+			var direction = Math.floor((Math.random() * 4) + 1);
+			//switch case, you might want to look this up
+			switch (direction) {
+				//if direction randoms to 1 move up
+				case 1: 
+				//set your interval to the variable moveUp, this is important to stop your interval
+				//setInterval accepts a function, and then an interval time in this case 500ms.
+				var moveUp = setInterval(
+					//this is called an anonymous function, notice it has no name or isnt assigned to any variable
+					function() {
+						//this function is going to run until the if condition isnt true anymore.
+						if(world[ghost.m - 1][ghost.s] != 2) {
+							ghost.m--;
+							//then you now have to update the ghosts position by calling displayRedGhost(); etc
+							displayRedGhost();
+							displayBlueGhost();
+						} else {
+							//this will stop the intrval from running when the first if statement isn't true
+							//the last thing you want is a bunch of intervals running at once which will bog down the system
+							clearInterval(moveUp);
+							//you call your own function within it self on the ghost to choose another direction, this is some next level inception type shit, I'm sure Choi would be impressed with this one.
+							moveGhost(ghost);
+						} 
+					}, 500);
+				break;
+				case 2:
+				//repeat of what I had just explained 
+				var moveRight = setInterval(function() {
+						if(world[ghost.m][ghost.s + 1] != 2) {
+							ghost.s++;
+							displayRedGhost();
+							displayBlueGhost();
+						} else {
+							clearInterval(moveRight);
+							moveGhost(ghost);
+						}
+					},500);
+				break;
+				case 3:
+				var moveDown = setInterval(function() {
+						if(world[ghost.m +1][ghost.s] != 2) {
+							ghost.m++;
+							displayRedGhost();
+							displayBlueGhost();
+						} else {
+							clearInterval(moveDown);
+							moveGhost(ghost);
+						}
+					}, 500);
+				break;
+				case 4: 
+				var moveLeft = setInterval(function() {
+						if(world[ghost.m][ghost.s - 1] != 2) {
+							ghost.s--;
+							displayRedGhost();
+							displayBlueGhost();
+						} else {
+							clearInterval(moveLeft);
+							moveGhost(ghost);
+						}
+				}, 500);
+				break;
+			}		
+		}
+
+		moveGhost(redGhost);
+		moveGhost(blueGhost);
+
+		displayWorld();
+		displayPacman();
+		displayMinion();
+		displayRedGhost();
+		displayBlueGhost();
+		document.onkeydown = function(e){
+
+			//pacman controls
+
+			//move left
+			if(e.keyCode == 37 && world[pacman.y][pacman.x -1] != 2){
+				pacman.x--;
+			}
+
+			//move right
+			else if(e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 2) {
+				pacman.x++;
+			}
+			//move up
+			else if(e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2){
+				pacman.y--;
+			}
+			//move down
+			else if(e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 2){
+				pacman.y++;
+			}
+
+			//minion controls
+			if(e.keyCode == 65 && world[minion.f][minion.g -1] != 2){
+				minion.g--;
+			}
+			else if(e.keyCode == 68 && world[minion.f][minion.g +1] != 2){
+				minion.g++;
+			}
+			else if(e.keyCode == 87 && world[minion.f - 1][minion.g] != 2){
+				minion.f--;
+			}
+			else if(e.keyCode == 83 && world[minion.f + 1][minion.g] != 2){
+				minion.f++;
+			}
+
+
+
+
+			//pacman score 
+			if(world[pacman.y][pacman.x] == 1){
+				world[pacman.y][pacman.x] = 0;
+				pscore += 10;
+			}
+			//minion score
+			if(world[minion.f][minion.g] == 1){
+				world[minion.f][minion.g] = 0;
+				mscore += 10;
+			}
+
+			displayPacman();
+			displayMinion();
+			displayWorld();
+			updatePscore();
+			updateMscore();
+		}
+		
+
+		</script>
+
+	</div>
+
+</body>
+</html>

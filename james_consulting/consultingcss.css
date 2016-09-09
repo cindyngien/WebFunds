@@ -1,0 +1,156 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+#wrapper{
+	background-color:#062134;
+	width: 920px;
+	height: 980px;
+}
+
+#header h1{
+	color: white;
+	margin: 18px 19px 0px 38px;
+}
+#header h1 span{
+	color: #1468a8;
+	
+}
+#header h1, #navigation{
+	display: inline-block;
+}
+#navigation ul li{
+	display: inline;
+	padding-left: 45px;
+}
+#navigation ul li a{
+	text-decoration: none;
+	color: white;
+}
+#navigation ul li a span{
+	color: #1468a8;
+}
+/*services area*/
+
+#maincontent{
+	background-color: white;
+	margin: 20px 23px 20px 20px;
+}
+#maincontent img, #toprow{
+	margin:19px 0px -10px 14px;
+}
+.tools img{
+	width: 30px;
+	vertical-align: top;
+	background-color: white;
+	border-radius: 20px;
+}
+.tools {
+	width: 275px;
+	height: 220px;
+	background-color: #1468a8;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0px 9px 7px -2px;
+
+}
+.tools h2{
+	display: inline-block;
+	margin-top: 23px;
+	color: white;
+}
+.tools p{
+	font-size: 12px;
+	color: white;
+	padding: 5px 6px 22px 10px;
+}
+
+.infobutton{
+	padding: 10px 35px;
+	margin-left:20px;
+	background-color: #33bdef;
+	border-radius: 5px;
+	color: white;
+	font-size: 12px;
+}
+
+/*bottom row stuff --- world and testimonial*/
+
+#bottomrow{
+	height: 230px;
+	width: 920px;
+	margin-right: 10px;
+}
+#world, #worldpara, #testimonial{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 10px;
+}
+#world{
+	width: 250px;
+	margin-right: 14px;
+}
+#world img{
+	width: 275px;
+	height: 162px;
+	margin-left: 0px;
+}
+
+#world h3{
+	font-size: 17px;
+}
+#worldpara{
+	padding-top:38px;
+}
+#worldpara p{
+	width: 274px;
+	font-size: 11px;
+	margin-left: 20px;
+
+}
+
+#worldpara a{
+	text-decoration: none;
+	font-size: 15px;
+	color: #1468a8;
+}
+
+#testimonial{
+	width: 180px;
+	margin-left: 10px;
+}
+
+#testimonial h3{
+	margin-bottom: 10px;
+}
+#testimonial p.bubble{
+	background-color: #daedff;
+	height: 85px;
+	width: 210px;
+	padding:20px;
+	font-style: italic;
+}
+#testimonial p.sam{
+	font-size: 12px;
+	width: 200px;
+	margin-top: 13px;
+}
+#footer{
+	margin-right: 5px;
+	border-top: 1px solid black;
+	display: block;
+	height: 50px;
+	background-color: #daedff;
+	text-align: center;
+}
+#footer ul li{
+	display: inline-block;
+	margin-top:15px;
+	font-size: 12px;
+	padding: 0px 10px;
+}
+#footer ul li a {
+	text-decoration: none;
+	color: #062134;
+}
