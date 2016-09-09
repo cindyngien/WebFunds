@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact Card</title>
+	<link rel="stylesheet" type="text/css" href="ContactCard.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('form').submit(function(){
+				return false;
+			});
+		});	
+		
+		$(document).on("click", "#submit", function(){
+			($('#cardDetails').append('<div class="newdiv">' + "<h3>" + $("#first_name").val() +" "+ $("#last_name").val()+ "</h3>" + "<p> Click for description </p>" + "</div>"));
+
+			$(document).on("click", 'p', function(){
+				$(this).replaceWith("<div>" + $("#description").val() + "</div>");
+			});
+		});	
+		$(document).on("click", "#reset", function(){
+			$("input").val("");
+		});
+	</script>
+
+</head>
+<body>
+
+	<div id="container">
+		<h1>Coding Dojo Contact Card</h1>
+
+		<!-- Contact form area -->
+		<div id ="forminfo">
+			<h2>Create Your Contact Card</h2>
+			<form>
+				<label>
+					First Name: <input type="text" id="first_name" placeholder ="First Name">		
+				</label>
+				<label>
+					Last Name: <input type="text" id="last_name" placeholder ="Last Name">	
+				</label>
+				<label>
+					Description: <input type="text" id="description" placeholder ="Enter Description">	
+				</label>
+				<button id="submit" value="Submit">Add User</button>
+				<button id="reset"> Reset</button>
+			</form>
+		</div>
+		<!-- Empty div to where the user post the information -->
+		<div id="cardDetails">
+
+		</div>
+
+
+	</div>
+</body>
+</html>

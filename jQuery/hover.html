@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hover In/Out</title>
+	<link rel="stylesheet" type="text/css" href="hover.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("img").hover(function(){
+				var imgsrc = $(this).attr("src");
+				$(this).attr("src", $(this).attr("data-alt-src"));
+				$(this).attr("data-alt-src", imgsrc);
+			});
+		});
+
+	</script>
+</head>
+<body>
+	<div id="container">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" data-alt-src="http://www.familyguyquotes.com/images/stewie.gif">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" data-alt-src="http://www.familyguyquotes.com/images/stewie.gif">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" data-alt-src="http://www.familyguyquotes.com/images/stewie.gif">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" data-alt-src="http://www.familyguyquotes.com/images/stewie.gif">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" data-alt-src="http://www.familyguyquotes.com/images/stewie.gif">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" data-alt-src="http://www.familyguyquotes.com/images/stewie.gif">
+	</div>
+		
+</body>
+</html>

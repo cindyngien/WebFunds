@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ninja2Cat</title>
+	<link rel="stylesheet" type="text/css" href="ninja2cat.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("img").click(function(){
+			var imgsrc = $(this).attr("src");
+			//Don't need to do an if statement - either way it will switch back and forth anyways
+			$(this).attr("src", $(this).attr("data-alt-src"));
+			//when you create a variable, you don't put it in strings, just call it directly
+			$(this).attr("data-alt-src", imgsrc);
+		});
+		$("button").click(function(){
+			$("img").show(500);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="wrapper">	
+		<div id="header">
+			<h1>Am I a Ninja or am I a cat?</h1>
+		<div id="ninja">
+			<img src="ninja0.png" alt="ninja or cat" data-alt-src="cat0.png">
+			<img src="ninja1.png" alt="ninja or cat" data-alt-src="cat1.png">
+			<img src="ninja2.png" alt="ninja or cat" data-alt-src="cat2.png">
+			<img src="ninja3.png" alt="ninja or cat" data-alt-src="cat3.png">
+			<img src="ninja4.png" alt="ninja or cat" data-alt-src="cat4.png">
+		</div>
+	</div>
+</body>
+</html>

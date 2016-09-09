@@ -1,0 +1,13 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#container{
+	width: 970px;
+	padding: 10px;
+}
+img{
+	width: 200px;
+	height: 200px;
+	border: 2px solid black;
+}

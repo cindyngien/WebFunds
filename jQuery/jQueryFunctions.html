@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQueryFunctionsAssignment</title>
+	<link rel="stylesheet" type="text/css" href="jQuery.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+			$("#alert").click(function(){
+				alert("Hello there! You have clicked on me!");
+			});
+
+			$("input").focus(function(){
+				$("span").css("display", "inline").fadeOut(2000);
+			});
+
+			$("#hide").click(function(){
+			    $("p").hide();
+			});
+
+			$("#show").click(function(){
+        		$("p").show();
+    		});
+    		$("#addtext").click(function(){
+    			$("p.cali").text("DisneyLand!!!!");
+    		});
+    		$("#addhtml").click(function(){
+    			$("p.html").html("<b>bold</b>");
+    		});
+    		$("#beforepara").click(function(){
+    			$("p").before("Adding a paragraph before!");
+    		});
+    		$("#afterpara").click(function(){
+    			$("p").after("Adding a paragraph after!");
+    		});
+    		$("#append").click(function(){
+    			$("ol").append("<li>Added new list item</li>"); 			
+    		});
+    		$("#addingclass").click(function(){
+    			$("h3").addClass("h3color");
+    		});
+    		$("#setvalue").click(function(){
+    			$("input.namevalue:text").val("Glenn Quagmire");
+    		});
+    		$("#attribute").click(function(){
+    			$("img").attr("width", "500");
+    		});
+    		$("#givedata").click(function(){
+    			$("div").data("greeting", "Hi Cindy");
+    		});
+    		$("#displaydata").click(function(){
+    			alert($("div").data("greeting"));
+    		});
+    		$("#toggle").click(function(){
+    			$("ul").toggle();
+    		});
+    		$("#fadeout").click(function(){
+    			$("h3").fadeOut(1000);
+    		});
+    		$("#fadein").click(function(){
+    			$("h3").fadeIn(1000);
+    		});
+    		$("#slideup").click(function(){
+    			$("p.slide").slideUp();
+    		});
+    		$("#slidedown").click(function(){
+    			$("p.slide").slideDown();
+    		});
+    		$("#slidetoggle").click(function(){
+    			$("p.slide").slideToggle();
+    		});
+		});
+	</script>
+</head>
+<body>
+		<h3>Alert Function</h3>
+		<p>Click this button to alert a message!</p>
+		<button id="alert">Click me!</button>
+
+		<h3>Focus/FadeOut</h3>
+		First Name:<input type = "text">
+		<span>Click input box to make this text disappear</span>
+
+		<h3>Hide/Show</h3>
+		<p>Paragraph 1</p>
+		<p>Paragraph 2</p>
+		<button id="hide">This will hide all paragraphs!</button>
+		<button id="show">This will show all paragraphs!</button>
+
+
+		<h3>ChangeText</h3>
+		<p class="cali">California</p>
+		<button id="addtext">Why should you go to California?</button>
+
+		<h3>ChangeHtml</h3>
+		<p class="html">I am getting......</p>
+		<button id="addhtml">Click me to find out</button>
+		
+		<h3>Before/After Paragraph</h3>
+		<button id="beforepara">Click to add a new paragraph before</button>
+		<button id="afterpara">Click to add a new paragraph after</button>
+
+		<h3>Append list item</h3>
+			<ol>
+				<li>One</li>
+				<li>Two</li>
+				<li>Three</li>
+			</ol>
+		<button id="append">Add another list item</button>
+
+		<h3>Adding Class</h3>
+		<button id="addingclass">Click me to change the h3 to red</button>
+
+		<h3>SetValue</h3>
+		Name: <input class="namevalue" type="text" name="user">
+		<button id="setvalue">Click here to set value</button>
+
+		<h3>Attribute</h3>
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-01.gif" alt="bartsimpson" width="200" height="300">
+		<button id="attribute">Change width of Bart Simpson</button>
+
+		<h3>Data</h3>
+		<button id="givedata">Passing data through</button>
+		<button id="displaydata">Displaying Data</button>
+		<div></div>
+
+		<h3>Toggle</h3>
+			<ul>
+				<li>Cats</li>
+				<li>Dogs</li>
+				<li>Squirrels</li>
+			</ul>
+		<button id="toggle">Toggle</button>
+
+		<h3>FadeIn</h3>
+		<button id="fadeout">FadeOut</button>
+		<button id="fadein">FadeIn</button>
+
+		<h3>SlideUp, SlideDown, SlideToggle</h3>
+		<p class="slide">This paragraph will be sliding up and down</p>
+		<button id="slideup">Slide Up</button>
+		<button id="slidedown">Slide Down</button>
+		<button id="slidetoggle">Slide Toggle</button>
+</body>
+</html>

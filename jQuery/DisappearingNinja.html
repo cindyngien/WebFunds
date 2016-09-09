@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Disappearing Ninja</title>
+	<link rel="stylesheet" type="text/css" href="DisappearingNinja.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("img").click(function(){
+				$(this).hide(1000);
+			});
+			$("#redo").click(function(){
+				$("img").show(500);
+			});
+			$("#instructions").click(function(){
+				alert("Use your mouse to make Bart Disappear. Click Redo to start over!");
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>¡Ay, caramba!</h1>
+	<div id="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+		<img src="http://bartsimpsonpictures.squarelogic.net/bart-simpson-08.gif" alt="bartsimpson">
+	</div>
+		<button id="redo">Re do!</button>
+		<button id="instructions">Instructions</button>
+</body>
+</html>

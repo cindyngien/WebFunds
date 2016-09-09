@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Adding a User with jQuery</title>
+	<link rel="stylesheet" type="text/css" href="AddUserjQuery.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('form').submit(function(){
+    			return false;
+					});
+			});
+
+			$(document).on("click", "#submit", function(){
+				($('table').append("<tr><td>"+ $("#first_name").val() +"</td>"+"<td>"+ $("#last_name").val()+"</td>"+"<td>"+ $("#emailaddress").val() + "</td>" + "<td>" + $("#contactnum").val() + "</td></tr>"));
+		});	
+			$(document).on("click","#submit", function(){
+				if($("input").val() == ""){
+				alert("Please fill everything in before submitting");
+			}
+			});
+
+			$(document).on("click", "#reset", function(){
+				$("input").val("");
+			});
+
+	</script>
+</head>
+<body>
+	<div id = "container">
+		<table>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email Address</th>
+				<th>Contact #</th>
+			</tr>
+		</table>
+		<div id ="forminfo">
+		<h2>Please Add A User</h2>
+			<form>
+				<p>First Name: <input type="text" id="first_name" placeholder ="First Name"></p>		
+				<p>Last Name: <input type="text" id="last_name" placeholder ="Last Name"></p>	
+				<p>Email Address: <input type="text" id="emailaddress" placeholder ="Email Address"></p>	
+				<p>Contact No.: <input type="text" id="contactnum" placeholder ="Phone #"></p>	
+				<button id="submit" value="Submit">Add Name</button>
+				<button id="reset"> Reset</button>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
